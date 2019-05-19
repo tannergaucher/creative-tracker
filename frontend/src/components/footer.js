@@ -1,21 +1,23 @@
 import React from "react"
-
-import { useSiteMetadata } from "../hooks/use-site-metadata"
+import { Clock, Analytics, Database } from "grommet-icons"
+import { Button, Box } from "grommet"
+import { navigate } from "@reach/router"
 
 export default function footer() {
-  const { title } = useSiteMetadata()
-
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "var(--one)",
-        background: "var(--light-2)",
-        fontWeight: "lighter",
-      }}
-    >
-      {title}
-    </div>
+    <Box direction="row" justify="around" elevation="small">
+      <Button
+        icon={<Clock color="var(--dark-3)" />}
+        onClick={() => navigate(`/track`)}
+      />
+      <Button
+        icon={<Database color="var(--dark-3)" />}
+        onClick={() => navigate(`/record`)}
+      />
+      <Button
+        icon={<Analytics color="var(--dark-3)" />}
+        onClick={() => navigate(`/analyze`)}
+      />
+    </Box>
   )
 }

@@ -1,18 +1,21 @@
 import React from "react"
 import { ApolloConsumer } from "react-apollo"
+import { Button } from "grommet"
 
 export default function logout() {
   return (
     <ApolloConsumer>
       {client => (
-        <button
+        <Button
+          label="Log Out"
+          plain
+          alignSelf="center"
+          margin={{ bottom: "medium" }}
           onClick={() => {
             client.resetStore()
             localStorage.clear()
           }}
-        >
-          Logout
-        </button>
+        />
       )}
     </ApolloConsumer>
   )

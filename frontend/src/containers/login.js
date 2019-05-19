@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Mutation, ApolloConsumer } from "react-apollo"
 import gql from "graphql-tag"
 import { navigate } from "@reach/router"
+import { Form, Button, FormField } from "grommet"
 
 const LOG_IN_MUTATION = gql`
   mutation LOG_IN_MUTATION($email: String!, $password: String!) {
@@ -28,7 +29,7 @@ export default function Login() {
         {client => (
           <Mutation mutation={LOG_IN_MUTATION} variables={values}>
             {(login, { loading, error }) => (
-              <form
+              <Form
                 method="post"
                 onSubmit={async e => {
                   e.preventDefault()
@@ -38,34 +39,33 @@ export default function Login() {
                   navigate(`/`)
                 }}
               >
-                <fieldset disabled={loading}>
-                  <h2>Log in to your accout</h2>
+                <fieldset disabled={loading} style={{ border: "none" }}>
                   {error && (
                     <p style={{ color: "var(--warning)" }}>{error.message}</p>
                   )}
-                  <label htmlFor="email">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      value={values.email}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <label htmlFor="password">
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      value={values.password}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <button type="submit" disabled={loading}>
-                    Login
-                  </button>
+
+                  <FormField
+                    type="email"
+                    name="email"
+                    label="Email"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+
+                  <FormField
+                    type="password"
+                    name="password"
+                    label="Password"
+                    value={values.password}
+                    onChange={handleChange}
+                  />
+                  <Button
+                    label="Log In"
+                    type="submit"
+                    margin={{ vertical: "medium" }}
+                  />
                 </fieldset>
-              </form>
+              </Form>
             )}
           </Mutation>
         )}

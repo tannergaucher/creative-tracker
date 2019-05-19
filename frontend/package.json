@@ -16,13 +16,16 @@
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-transformer-sharp": "^2.1.19",
     "graphql": "^14.3.0",
+    "grommet": "^2.7.0",
+    "grommet-icons": "^4.2.0",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "prettier": "^1.17.1"

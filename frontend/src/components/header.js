@@ -1,30 +1,27 @@
 import { Link } from "gatsby"
 import React from "react"
-import { useQuery } from "react-apollo-hooks"
+import { Box, Heading } from "grommet"
 
 import { useSiteMetadata } from "../hooks/use-site-metadata"
-import { IS_LOGGED_IN } from "../apollo/graphql"
-import Logout from "../containers/logout"
+
+import Menu from "../components/menu"
 
 export default function Header() {
   const { title } = useSiteMetadata()
 
-  const {
-    data: { isLoggedIn },
-  } = useQuery(IS_LOGGED_IN)
-
   return (
-    <header
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "var(--one)",
-        background: "var(--light-2)",
-        fontWeight: "lighter",
-      }}
-    >
-      <Link to="/">{title}</Link>
-      {isLoggedIn ? <Logout /> : <Link to="/login">Log in</Link>}
-    </header>
+    <Box as="header" justify="between" direction="row" align="center">
+      <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <Heading
+          level="4"
+          margin={{ vertical: "none", left: "medium" }}
+          style={{ fontWeight: "100", fontFamily: "var(--serif)" }}
+          color="dark-1"
+        >
+          {title}
+        </Heading>
+      </Link>
+      <Menu />
+    </Box>
   )
 }

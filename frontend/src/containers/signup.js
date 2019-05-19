@@ -3,6 +3,8 @@ import { Mutation, ApolloConsumer } from "react-apollo"
 import gql from "graphql-tag"
 import { navigate } from "@reach/router"
 
+import { Form, Button, FormField } from "grommet"
+
 const SIGN_UP_MUTATION = gql`
   mutation SIGN_UP_MUTATION(
     $name: String!
@@ -31,7 +33,7 @@ export default function Signup() {
       {client => (
         <Mutation mutation={SIGN_UP_MUTATION} variables={values}>
           {(signup, { loading, error }) => (
-            <form
+            <Form
               method="post"
               onSubmit={async e => {
                 e.preventDefault()
@@ -42,45 +44,42 @@ export default function Signup() {
                 navigate(`/`)
               }}
             >
-              <fieldset disabled={loading}>
-                <h2>Sign up for an account</h2>
+              <fieldset disabled={loading} style={{ border: "none" }}>
                 {error && (
                   <p style={{ color: "var(--warning)" }}>{error.message}</p>
                 )}
-                <label htmlFor="email">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={values.email}
-                    onChange={handleChange}
-                  />
-                </label>
 
-                <label htmlFor="password">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={values.password}
-                    onChange={handleChange}
-                  />
-                </label>
+                <FormField
+                  type="email"
+                  name="email"
+                  label="Email"
+                  value={values.email}
+                  onChange={handleChange}
+                />
 
-                <label htmlFor="name">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="name"
-                    value={values.name}
-                    onChange={handleChange}
-                  />
-                </label>
-                <button type="submit" disabled={loading}>
-                  sign up
-                </button>
+                <FormField
+                  type="password"
+                  name="password"
+                  label="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
+
+                <FormField
+                  type="text"
+                  name="name"
+                  label="Name"
+                  value={values.name}
+                  onChange={handleChange}
+                />
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  label="Sign Up"
+                  margin={{ vertical: "medium" }}
+                />
               </fieldset>
-            </form>
+            </Form>
           )}
         </Mutation>
       )}

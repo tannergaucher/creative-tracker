@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lora|Roboto:300,400,900");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto+Slab&display=swap");
 
 :root {
   /* COLOR */
@@ -38,8 +38,8 @@
   /* (tablet is implied) */
   --desktop: 1200px;
   /* TYPOGRAPHY */
-  --serif: "Lora", serif;
-  --sans: "Roboto", sans-serif;
+  --serif: "Roboto Slab", serif;
+  --sans: "Roboto Mono", monospace;
   --text-color: black;
   --line-height: 1.667;
   --font-size: 21px;

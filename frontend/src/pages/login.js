@@ -1,12 +1,15 @@
 import React from "react"
-import Layout from "../components/layout"
+import { Box } from "grommet"
 
+import Layout from "../components/layout"
 import Auth from "../components/auth"
 
 export default function login() {
   return (
     <Layout>
-      <Auth />
+      <Box margin={{ vertical: "medium" }}>
+        <Auth />
+      </Box>
     </Layout>
   )
 }
